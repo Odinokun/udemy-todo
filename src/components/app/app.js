@@ -19,13 +19,15 @@ const App = () => {
 
     return (
         <div className="todo-app">
-            <AppHeader toDo={1} done={3} />
+            <AppHeader toDo={2} done={3} />
             <div className="top-panel d-flex">
                 <SearchPanel />
                 <ItemStatusFilter />
             </div>
 
-            <TodoList todos={todoData} />
+            <TodoList
+                todos={todoData}
+                 onDeleted={ (id) => console.log('del', id) } />
         </div>
     );
 };
