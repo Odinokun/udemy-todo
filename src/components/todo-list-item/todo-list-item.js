@@ -7,17 +7,7 @@ export default class TodoListItem extends Component {
         super();
 
         this.state = {
-            done: false,
             important: false
-        };
-
-        // при клике на пункт добавляем/убираем к классу класс 'done'
-        this.onLabelClick = () => {
-            this.setState(({done}) => { /*деструктурируем из state свойство done*/
-                return {
-                    done: !done
-                }
-            });
         };
 
         // при клике на кнопку добавляем/убираем к классу класс 'important'
@@ -32,8 +22,9 @@ export default class TodoListItem extends Component {
     }
 
     render() {
-        const { label, onDeleted } = this.props;
-        const { done, important } = this.state;
+        const { label, onDeleted, done,
+                onToggleDone } = this.props;
+        const { important } = this.state;
 
         let classNames = 'todo-list-item';
 
@@ -50,7 +41,7 @@ export default class TodoListItem extends Component {
             <span className={ classNames }>
                 <span
                     className="todo-list-item-label"
-                    onClick = { this.onLabelClick }>
+                    onClick = { onToggleDone }>
                     {label}
                 </span>
 
